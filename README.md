@@ -230,6 +230,7 @@ sequenceDiagram
         SC-->>SC: Update order status
         SC-->>U: Trade executed
     end
+---
 
 ---
 
