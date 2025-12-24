@@ -180,36 +180,6 @@ All without revealing values.
 
 ---
 
----
-
-## 🧱 END TO END WORKFLOW
-
-```mermaid
-%%{init: {'theme':'dark', 'themeVariables': {
-    'primaryColor':'#38bdf8',
-    'primaryTextColor':'#fff',
-    'primaryBorderColor':'#0ea5e9',
-    'lineColor':'#38bdf8',
-    'secondaryColor':'#22c55e',
-    'tertiaryColor':'#ef4444',
-    'background':'#111',
-    'mainBkg':'#1b1b1b',
-    'secondBkg':'#242424',
-    'labelBackground':'#242424',
-    'labelTextColor':'#fff',
-    'actorBkg':'#2f2f2f',
-    'actorBorder':'#38bdf8',
-    'actorTextColor':'#fff',
-    'signalColor':'#38bdf8',
-    'signalTextColor':'#fff'
-}}}%%
-sequenceDiagram
-    participant U as Trader
-    participant C as Client App
-    participant SC as Orderbook (FHEVM)
-
-    rect 
----
 
 ## 🧱 END TO END WORKFLOW
 
