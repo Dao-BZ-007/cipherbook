@@ -180,6 +180,106 @@ All without revealing values.
 
 ---
 
+---
+
+## 🧱 END TO END WORKFLOW
+
+```mermaid
+%%{init: {'theme':'dark', 'themeVariables': {
+    'primaryColor':'#38bdf8',
+    'primaryTextColor':'#fff',
+    'primaryBorderColor':'#0ea5e9',
+    'lineColor':'#38bdf8',
+    'secondaryColor':'#22c55e',
+    'tertiaryColor':'#ef4444',
+    'background':'#111',
+    'mainBkg':'#1b1b1b',
+    'secondBkg':'#242424',
+    'labelBackground':'#242424',
+    'labelTextColor':'#fff',
+    'actorBkg':'#2f2f2f',
+    'actorBorder':'#38bdf8',
+    'actorTextColor':'#fff',
+    'signalColor':'#38bdf8',
+    'signalTextColor':'#fff'
+}}}%%
+sequenceDiagram
+    participant U as Trader
+    participant C as Client App
+    participant SC as Orderbook (FHEVM)
+
+    rect 
+---
+
+## 🧱 END TO END WORKFLOW
+
+```mermaid
+%%{init: {'theme':'dark', 'themeVariables': {
+    'primaryColor':'#38bdf8',
+    'primaryTextColor':'#fff',
+    'primaryBorderColor':'#0ea5e9',
+    'lineColor':'#38bdf8',
+    'secondaryColor':'#22c55e',
+    'tertiaryColor':'#ef4444',
+    'background':'#111',
+    'mainBkg':'#1b1b1b',
+    'secondBkg':'#242424',
+    'labelBackground':'#242424',
+    'labelTextColor':'#fff',
+    'actorBkg':'#2f2f2f',
+    'actorBorder':'#38bdf8',
+    'actorTextColor':'#fff',
+    'signalColor':'#38bdf8',
+    'signalTextColor':'#fff'
+}}}%%
+sequenceDiagram
+    participant U as Trader
+    participant C as Client App
+    participant SC as Orderbook (FHEVM)
+
+    rect rgb(30,50,90)
+        Note over U,SC: STAGE 1 · Encrypted Order Placement
+        U->>C: Enter price & amount
+        C->>C: Encrypt values
+        C->>SC: placeOrder(encrypted data)
+        SC-->>C: Order stored
+    end
+
+    rect rgb(199, 125, 255)
+        Note over U,SC: STAGE 2 · Encrypted Matching
+        U->>SC: findMatch(orderId)
+        SC->>SC: Compare encrypted prices
+        SC-->>U: Matching orders found
+    end
+
+    rect rgb(157, 78, 221)
+        Note over U,SC: STAGE 3 · Trade Execution
+        U->>SC: confirmMatch
+        SC-->>SC: Update order status
+        SC-->>U: Trade executed
+    end
+
+        Note over U,SC: STAGE 1 · Encrypted Order Placement
+        U->>C: Enter price & amount
+        C->>C: Encrypt values
+        C->>SC: placeOrder(encrypted data)
+        SC-->>C: Order stored
+    end
+
+    rect rgb(40,80,60)
+        Note over U,SC: STAGE 2 · Encrypted Matching
+        U->>SC: findMatch(orderId)
+        SC->>SC: Compare encrypted prices
+        SC-->>U: Matching orders found
+    end
+
+    rect rgb(80,60,40)
+        Note over U,SC: STAGE 3 · Trade Execution
+        U->>SC: confirmMatch
+        SC-->>SC: Update order status
+        SC-->>U: Trade executed
+    end
+
 
 
 ## 📊 Deployed Contract
@@ -219,7 +319,7 @@ npx hardhat ignition deploy ignition/modules/CipherBook.ts --network localhost
 cd forntend
 npm run dev
 ```
-🧰 Tech Stack
+### 🧰 Tech Stack
 
 Frontend: React + Vite
 
@@ -231,7 +331,7 @@ Wallet: MetaMask
 
 Deployment: Vercel + Ethereum Sepolia
 
-🎯 Future Work
+### 🎯 Future Work
 
 Batch encrypted matching
 
@@ -241,6 +341,6 @@ Encrypted AMM hybrid
 
 Cross-chain private trading
 
-📄 License
+### 📄 License
 
 MIT License — see LICENSE file.
