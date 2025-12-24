@@ -179,24 +179,6 @@ All without revealing values.
      └───────────────────────────────┘
 
 ---
-### 🔐 High-Level Architecture
-
-```mermaid
-flowchart TB
-    U[User Wallet<br/>(MetaMask)] -->|Encrypted Order Data| FE[Frontend (React + Vite)]
-
-    FE -->|Encrypted Inputs| SC[FHEVM Smart Contract<br/>(CipherBook.sol)]
-
-    SC -->|Encrypted Order Storage| OB[(On-Chain Orderbook)]
-
-    SC -->|Encrypted Comparison| EM[ZAMA FHE Matching Logic]
-
-    EM -->|Match Result (Encrypted)| SC
-
-    SC -->|Order Status Update| OB
-
-    OB -->|Encrypted Read| FE
-    
 
  ## 📊 Deployed Contract
 
