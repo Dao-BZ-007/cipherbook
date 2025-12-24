@@ -184,7 +184,7 @@ All without revealing values.
 
 | Contract Name | Address                                    | Explorer Link                                                                                        |
 | ------------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| FileRegistry  | 0x4C85a629EE8eF798E8d88bb5DF4610A68D0aD45D | [View on Etherscan](https://sepolia.etherscan.io/address/0x4C85a629EE8eF798E8d88bb5DF4610A68D0aD45D) |
+| Sepolia Testnet| 0x4C85a629EE8eF798E8d88bb5DF4610A68D0aD45D | [View on Etherscan](https://sepolia.etherscan.io/address/0x4C85a629EE8eF798E8d88bb5DF4610A68D0aD45D) |
 
 ---
 
