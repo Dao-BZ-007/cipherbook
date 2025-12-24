@@ -9,7 +9,7 @@ _All order data (price, amount, order type) remains encrypted on-chain and durin
 
 **Only the trader can ever see their order details.**
 
-**[🎥 Watch Full Demo Video](https://www.youtube.com/watch?v=AX6OrbgS8lI&list=RDNW6Dgax2d6I&index=27)**
+**[🎥 Watch Full Demo Video](https://youtu.be/REPLACE_WITH_YOUR_DEMO_LINK)**
 
 </div>
 
@@ -147,6 +147,10 @@ Everything runs fully on-chain with encryption.
 All without revealing values.
 
 ---
+
+## 🧬 System Architecture
+
+
 
 ## 🧬 System Architecture
 
