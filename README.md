@@ -224,4 +224,45 @@ sequenceDiagram
         SC-->>SC: Update order status
         SC-->>U: Trade executed
     end
+---
+---
 
+## 📊 Deployed Contract
+
+| Contract Name | Address                                    | Explorer Link                                                                                        |
+| ------------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| FileRegistry  | 0x4C85a629EE8eF798E8d88bb5DF4610A68D0aD45D | [View on Etherscan](https://sepolia.etherscan.io/address/0x4C85a629EE8eF798E8d88bb5DF4610A68D0aD45D) |
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run, test, and develop **CipherBook** locally using **Vite, Hardhat and FHEVM**.
+
+---
+
+### ✅ 1. Install Dependencies
+
+```bash
+cd contracts
+npm install
+```
+
+---
+
+### ✅ 2. Compile Contracts
+
+```bash
+cd contracts
+npx hardhat compile
+npx hardhat ignition deploy ignition/modules/CipherBook.ts --network localhost
+```
+
+### ✅ 3. Run Frontend
+
+```bash
+cd forntend
+npm run dev
+```
+
+---
