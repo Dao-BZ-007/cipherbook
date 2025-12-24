@@ -157,30 +157,33 @@ The contract **never decrypts** any order data.
 
 ---
 
-## 🧬 System Architecture
-┌────────────────────────┐
-│ Frontend (UI) │
-│ - Wallet connection │
-│ - Encrypted input │
-│ - Match discovery │
-└──────────┬─────────────┘
-│
-▼
-┌────────────────────────┐
-│ Smart Contract (FHE) │
-│ - Store encrypted data│
-│ - Compare ciphertext │
-│ - Enforce matching │
-│ - No plaintext access │
-└──────────┬─────────────┘
-│
-▼
-┌────────────────────────┐
-│ Ethereum Blockchain │
-│ - Verifiable execution│
-│ - Public settlement │
-│ - Private computation │
-└────────────────────────┘
+---
+
+## 🏗️ System Architecture
+
+CipherBook is a **privacy-preserving on-chain orderbook** built using **Zama’s FHEVM**, where **order details remain encrypted at all times**, yet can still be matched correctly on-chain.
+
+Unlike traditional DEXs, CipherBook ensures that **price, amount, and order intent are never revealed publicly**, preventing front-running, MEV, and order-flow leakage.
+
+---
+
+### 🔐 High-Level Architecture
+
+```mermaid
+flowchart TB
+    U[User Wallet<br/>(MetaMask)] -->|Encrypted Order Data| FE[Frontend (React + Vite)]
+
+    FE -->|Encrypted Inputs| SC[FHEVM Smart Contract<br/>(CipherBook.sol)]
+
+    SC -->|Encrypted Order Storage| OB[(On-chain Orderbook)]
+
+    SC -->|Encrypted Comparison| EM[Encrypted Matching Logic<br/>(ZAMA FHE)]
+
+    EM -->|Match Result (Encrypted)| SC
+
+    SC -->|Order Status Update| OB
+
+    OB -->|Read (Encrypted)| FE
 
 ---
 
