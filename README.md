@@ -183,7 +183,7 @@ All without revealing values.
 ---
 
 ## 🧱 END TO END WORKFLOW
-mermaid
+```mermaid
 %%{init: {'theme':'dark', 'themeVariables': {
     'primaryColor':'#38bdf8',
     'primaryTextColor':'#fff',
