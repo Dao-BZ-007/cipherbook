@@ -2,13 +2,14 @@
 
 # 🔐 CIPHERBOOK
 
-### **Private On-Chain Orderbook — Enforced With ZAMA Fully Homomorphic Encryption**
+### **Private, Encrypted On-Chain Orderbook — Enforced With FHE**
 
-_CipherBook enables users to place, match, and execute trades privately on-chain using Fully Homomorphic Encryption (FHE)._
+_CipherBook allows users to place, match, and execute trades privately using fully homomorphic encryption._
+_All order data (price, amount, order type) remains encrypted on-chain and during execution._
 
-_All sensitive order data (price, amount, order type) remains encrypted at all times — even from the smart contract and blockchain._
+**Only the trader can ever see their order details.**
 
-**No front-running. No MEV. No data leaks.**
+**[🎥 Watch Full Demo Video](https://www.youtube.com/watch?v=AX6OrbgS8lI&list=RDNW6Dgax2d6I&index=27)**
 
 </div>
 
@@ -16,28 +17,29 @@ _All sensitive order data (price, amount, order type) remains encrypted at all t
 
 ## 🌟 Overview
 
-**CIPHERBOOK** is a **privacy-preserving decentralized orderbook** built on **ZAMA’s FHEVM**, where **orders are matched using encrypted values** without ever revealing them.
+**CIPHERBOOK** is a **privacy-preserving decentralized orderbook** built on Zama’s **FHEVM**, where **orders are created, matched, and filled using encrypted values** — even the smart contract never sees plaintext data.
 
-In traditional DEXs:
-- Orders are public
-- Prices are visible
-- MEV bots exploit users
-- Front-running is unavoidable
+Traditional DEX orderbooks expose:
+- order prices
+- order sizes
+- trade intent
 
-CipherBook fixes this.
+This leads to **MEV, front-running, and unfair execution**.
+
+CipherBook fixes that.
 
 ### What CipherBook enables
 
-- Users place BUY / SELL orders with:
+- Place BUY / SELL orders with:
   - encrypted price
   - encrypted amount
-- Orders are stored **fully encrypted on-chain**
-- Matching logic runs on encrypted values using **FHE**
-- Smart contracts never see plaintext data
+- Store encrypted orders **directly on-chain**
+- Perform order matching using **FHE encrypted comparisons**
+- Execute trades without revealing sensitive information
 
 This means:
 
-> **Even the blockchain cannot see your order details.**
+> **Even the blockchain cannot see your orders, prices, or trade intent.**
 
 ---
 
@@ -47,145 +49,21 @@ Every on-chain orderbook today has a fatal flaw:
 
 > **Transparency enables exploitation.**
 
-Public order flow leads to:
-- MEV extraction
-- Sandwich attacks
-- Unfair execution
+Public order flow allows:
+- MEV bots
+- sandwich attacks
+- unfair execution
 
-CipherBook eliminates this by design.
+This breaks trust.
 
-- Orders are encrypted client-side
-- Matching happens on encrypted data
-- No trusted matcher
-- No off-chain coordinator
-- No privileged actor
+**CipherBook removes the exploit surface entirely.**
 
-This is **true on-chain privacy for trading**, made possible by **ZAMA FHE**.
+- Orders are encrypted under FHE
+- Matching logic runs on ciphertext
+- Smart contracts validate trades without decryption
+- No sequencer, matcher, or node can read order data
 
----
-
-## 🧩 Core Components
-
-### 1. Client (React + Vite)
-
-Handles all user interaction:
-
-- Collects order inputs
-- Encrypts price & amount
-- Submits encrypted data on-chain
-- Displays order history and match results
-
-No sensitive data is ever exposed.
-
----
-
-### 2. Smart Contract (ZAMA FHEVM + Solidity)
-
-Maintains encrypted trading logic:
-
-- Stores encrypted orders
-- Compares encrypted prices
-- Matches BUY ↔ SELL orders
-- Updates order status securely
-
-The contract **never decrypts anything**.
-
----
-
-### 3. Encrypted On-Chain Orderbook
-
-- Encrypted BUY orders
-- Encrypted SELL orders
-- Encrypted order status (OPEN / FILLED)
-
-All data lives **directly on-chain**, protected by FHE.
-
----
-
-## ⚙️ How It Works (High-Level Flow)
-
-1️⃣ **User places order**  
-→ Frontend encrypts price & amount  
-
-2️⃣ **Encrypted order submitted on-chain**  
-→ Stored in smart contract  
-
-3️⃣ **User requests matching**  
-→ Encrypted comparison performed using FHE  
-
-4️⃣ **If match conditions satisfied**  
-→ Orders are filled  
-→ Status updated on-chain  
-
-All without revealing values.
-
----
-
-## 🧬 System Architecture
-
-<div align="center">
-
-# 🔐 CIPHERBOOK
-
-### **Private On-Chain Orderbook — Enforced With ZAMA Fully Homomorphic Encryption**
-
-_CipherBook enables users to place, match, and execute trades privately on-chain using Fully Homomorphic Encryption (FHE)._
-
-_All sensitive order data (price, amount, order type) remains encrypted at all times — even from the smart contract and blockchain._
-
-**No front-running. No MEV. No data leaks.**
-
-</div>
-
----
-
-## 🌟 Overview
-
-**CIPHERBOOK** is a **privacy-preserving decentralized orderbook** built on **ZAMA’s FHEVM**, where **orders are matched using encrypted values** without ever revealing them.
-
-In traditional DEXs:
-- Orders are public
-- Prices are visible
-- MEV bots exploit users
-- Front-running is unavoidable
-
-CipherBook fixes this.
-
-### What CipherBook enables
-
-- Users place BUY / SELL orders with:
-  - encrypted price
-  - encrypted amount
-- Orders are stored **fully encrypted on-chain**
-- Matching logic runs on encrypted values using **FHE**
-- Smart contracts never see plaintext data
-
-This means:
-
-> **Even the blockchain cannot see your order details.**
-
----
-
-### Why CipherBook Matters
-
-Every on-chain orderbook today has a fatal flaw:
-
-> **Transparency enables exploitation.**
-
-Public order flow leads to:
-- MEV extraction
-- Sandwich attacks
-- Unfair execution
-
-CipherBook eliminates this by design.
-
-- Orders are encrypted client-side
-- Matching happens on encrypted data
-- No trusted matcher
-- No off-chain coordinator
-- No privileged actor
-
-This is **true on-chain privacy for trading**, made possible by **ZAMA FHE**.
+This is the **first true privacy-preserving on-chain orderbook primitive**.
 
 ---
 
@@ -193,394 +71,155 @@ This is **true on-chain privacy for trading**, made possible by **ZAMA FHE**.
 
 ### 1. Client (React + Vite)
 
-Handles all user interaction:
+Handles encrypted order creation:
 
-- Collects order inputs
-- Encrypts price & amount
-- Submits encrypted data on-chain
-- Displays order history and match results
+- Encrypt order price and amount
+- Submit encrypted orders on-chain
+- Display order history and matches
+- Interact with wallet (MetaMask)
 
-No sensitive data is ever exposed.
+### 2. Smart Contract (FHEVM + Solidity)
 
----
-
-### 2. Smart Contract (ZAMA FHEVM + Solidity)
-
-Maintains encrypted trading logic:
+Maintains encrypted trading state:
 
 - Stores encrypted orders
 - Compares encrypted prices
 - Matches BUY ↔ SELL orders
 - Updates order status securely
+- Never touches plaintext
 
-The contract **never decrypts anything**.
-
----
-
-### 3. Encrypted On-Chain Orderbook
+### 3. On-Chain Orderbook
 
 - Encrypted BUY orders
 - Encrypted SELL orders
-- Encrypted order status (OPEN / FILLED)
+- Encrypted order status
+- Fully decentralized and trustless
 
-All data lives **directly on-chain**, protected by FHE.
+### 4. Matching Engine (On-Chain via FHE)
 
----
-
-## ⚙️ How It Works (High-Level Flow)
-
-1️⃣ **User places order**  
-→ Frontend encrypts price & amount  
-
-2️⃣ **Encrypted order submitted on-chain**  
-→ Stored in smart contract  
-
-3️⃣ **User requests matching**  
-→ Encrypted comparison performed using FHE  
-
-4️⃣ **If match conditions satisfied**  
-→ Orders are filled  
-→ Status updated on-chain  
-
-All without revealing values.
-
----
-
-## 🧬 System Architecture
-
-<div align="center">
-
-# 🔐 CIPHERBOOK
-
-### **Private On-Chain Orderbook — Enforced With ZAMA Fully Homomorphic Encryption**
-
-_CipherBook enables users to place, match, and execute trades privately on-chain using Fully Homomorphic Encryption (FHE)._
-
-_All sensitive order data (price, amount, order type) remains encrypted at all times — even from the smart contract and blockchain._
-
-**No front-running. No MEV. No data leaks.**
-
-</div>
-
----
-
-## 🌟 Overview
-
-**CIPHERBOOK** is a **privacy-preserving decentralized orderbook** built on **ZAMA’s FHEVM**, where **orders are matched using encrypted values** without ever revealing them.
-
-In traditional DEXs:
-- Orders are public
-- Prices are visible
-- MEV bots exploit users
-- Front-running is unavoidable
-
-CipherBook fixes this.
-
-### What CipherBook enables
-
-- Users place BUY / SELL orders with:
-  - encrypted price
-  - encrypted amount
-- Orders are stored **fully encrypted on-chain**
-- Matching logic runs on encrypted values using **FHE**
-- Smart contracts never see plaintext data
-
-This means:
-
-> **Even the blockchain cannot see your order details.**
-
----
-
-### Why CipherBook Matters
-
-Every on-chain orderbook today has a fatal flaw:
-
-> **Transparency enables exploitation.**
-
-Public order flow leads to:
-- MEV extraction
-- Sandwich attacks
-- Unfair execution
-
-CipherBook eliminates this by design.
-
-- Orders are encrypted client-side
-- Matching happens on encrypted data
-- No trusted matcher
+- Encrypted comparisons
+- Fair matching logic
+- No front-running
 - No off-chain coordinator
-- No privileged actor
-
-This is **true on-chain privacy for trading**, made possible by **ZAMA FHE**.
-
----
-
-## 🧩 Core Components
-
-### 1. Client (React + Vite)
-
-Handles all user interaction:
-
-- Collects order inputs
-- Encrypts price & amount
-- Submits encrypted data on-chain
-- Displays order history and match results
-
-No sensitive data is ever exposed.
-
----
-
-### 2. Smart Contract (ZAMA FHEVM + Solidity)
-
-Maintains encrypted trading logic:
-
-- Stores encrypted orders
-- Compares encrypted prices
-- Matches BUY ↔ SELL orders
-- Updates order status securely
-
-The contract **never decrypts anything**.
-
----
-
-### 3. Encrypted On-Chain Orderbook
-
-- Encrypted BUY orders
-- Encrypted SELL orders
-- Encrypted order status (OPEN / FILLED)
-
-All data lives **directly on-chain**, protected by FHE.
-
----
-
-## ⚙️ How It Works (High-Level Flow)
-
-1️⃣ **User places order**  
-→ Frontend encrypts price & amount  
-
-2️⃣ **Encrypted order submitted on-chain**  
-→ Stored in smart contract  
-
-3️⃣ **User requests matching**  
-→ Encrypted comparison performed using FHE  
-
-4️⃣ **If match conditions satisfied**  
-→ Orders are filled  
-→ Status updated on-chain  
-
-All without revealing values.
-
----
-
-## 🧬 System Architecture
-
-<div align="center">
-
-# 🔐 CIPHERBOOK
-
-### **Private On-Chain Orderbook — Enforced With ZAMA Fully Homomorphic Encryption**
-
-_CipherBook enables users to place, match, and execute trades privately on-chain using Fully Homomorphic Encryption (FHE)._
-
-_All sensitive order data (price, amount, order type) remains encrypted at all times — even from the smart contract and blockchain._
-
-**No front-running. No MEV. No data leaks.**
-
-</div>
-
----
-
-## 🌟 Overview
-
-**CIPHERBOOK** is a **privacy-preserving decentralized orderbook** built on **ZAMA’s FHEVM**, where **orders are matched using encrypted values** without ever revealing them.
-
-In traditional DEXs:
-- Orders are public
-- Prices are visible
-- MEV bots exploit users
-- Front-running is unavoidable
-
-CipherBook fixes this.
-
-### What CipherBook enables
-
-- Users place BUY / SELL orders with:
-  - encrypted price
-  - encrypted amount
-- Orders are stored **fully encrypted on-chain**
-- Matching logic runs on encrypted values using **FHE**
-- Smart contracts never see plaintext data
-
-This means:
-
-> **Even the blockchain cannot see your order details.**
-
----
-
-### Why CipherBook Matters
-
-Every on-chain orderbook today has a fatal flaw:
-
-> **Transparency enables exploitation.**
-
-Public order flow leads to:
-- MEV extraction
-- Sandwich attacks
-- Unfair execution
-
-CipherBook eliminates this by design.
-
-- Orders are encrypted client-side
-- Matching happens on encrypted data
-- No trusted matcher
-- No off-chain coordinator
-- No privileged actor
-
-This is **true on-chain privacy for trading**, made possible by **ZAMA FHE**.
-
----
-
-## 🧩 Core Components
-
-### 1. Client (React + Vite)
-
-Handles all user interaction:
-
-- Collects order inputs
-- Encrypts price & amount
-- Submits encrypted data on-chain
-- Displays order history and match results
-
-No sensitive data is ever exposed.
-
----
-
-### 2. Smart Contract (ZAMA FHEVM + Solidity)
-
-Maintains encrypted trading logic:
-
-- Stores encrypted orders
-- Compares encrypted prices
-- Matches BUY ↔ SELL orders
-- Updates order status securely
-
-The contract **never decrypts anything**.
-
----
-
-### 3. Encrypted On-Chain Orderbook
-
-- Encrypted BUY orders
-- Encrypted SELL orders
-- Encrypted order status (OPEN / FILLED)
-
-All data lives **directly on-chain**, protected by FHE.
-
----
-
-## ⚙️ How It Works (High-Level Flow)
-
-1️⃣ **User places order**  
-→ Frontend encrypts price & amount  
-
-2️⃣ **Encrypted order submitted on-chain**  
-→ Stored in smart contract  
-
-3️⃣ **User requests matching**  
-→ Encrypted comparison performed using FHE  
-
-4️⃣ **If match conditions satisfied**  
-→ Orders are filled  
-→ Status updated on-chain  
-
-All without revealing values.
-
----
-
-## 🧬 System Architecture
-
-┌──────────────────────────┐
-│ User Wallet │
-│ (MetaMask) │
-└──────────┬───────────────┘
-│
-▼
-┌──────────────────────────┐
-│ Frontend (React + Vite)│
-│ - Encrypt order data │
-│ - Submit transactions │
-│ - Display results │
-└──────────┬───────────────┘
-│
-▼
-┌──────────────────────────┐
-│ FHEVM Smart Contract │
-│ - Store encrypted orders │
-│ - Compare encrypted vals │
-│ - Match orders │
-│ - Never sees plaintext │
-└──────────┬───────────────┘
-│
-▼
-┌──────────────────────────┐
-│ Encrypted On-Chain State │
-│ - Orders │
-│ - Status │
-└──────────────────────────┘
 
 ---
 
 ## 🛠️ Features
 
-- **Encrypted Order Placement**
-- **Encrypted Order Matching**
-- **On-Chain Order History**
-- **MEV Resistance**
-- **No Trusted Intermediary**
-- **Fully Decentralized**
+- ### **Encrypted Order Placement**
+
+All order parameters are encrypted client-side.
+
+- ### **Encrypted Order Matching**
+
+Matching happens directly on encrypted values using FHE.
+
+- ### **MEV Resistance**
+
+No public order data → no front-running.
+
+- ### **Trustless Execution**
+
+No matcher, sequencer, or relayer is trusted.
+
+- ### **On-Chain Privacy**
+
+Everything runs fully on-chain with encryption.
 
 ---
 
-## 📸 Screenshots
+## ⚙️ How it Works (High-Level Flow)
 
-_Add screenshots here:_
+1️⃣ **User places order**  
+→ Client encrypts price & amount  
+→ Encrypted order sent to smart contract  
 
-- Home Page
-- Place Order Page
-- Order History Page
-- Encrypted Matching Page
+2️⃣ **Order stored on-chain**  
+→ Stored fully encrypted  
 
----
+3️⃣ **User initiates matching**  
+→ Contract compares encrypted prices  
 
-## 🔐 Why We Chose ZAMA FHE
+4️⃣ **Match confirmed**  
+→ Orders are filled  
+→ Status updated on-chain  
 
-ZAMA’s Fully Homomorphic Encryption allows:
-
-> **Computation on encrypted data — directly on-chain.**
-
-With ZAMA FHEVM:
-- Data stays encrypted
-- Logic still executes correctly
-- Trust assumptions disappear
-
-CipherBook would **not be possible** without FHE.
-
-This project demonstrates how ZAMA unlocks:
-- Private DeFi
-- Confidential trading
-- Fair execution
+All without revealing values.
 
 ---
 
-## 🚀 Getting Started
+## 🧬 System Architecture
+    ┌────────────────────────┐
+    │      Client (React)    │
+    │ - Encrypt order data   │
+    │ - Submit transactions  │
+    │ - Display UI           │
+    └──────────┬─────────────┘
+               │
+               ▼
+   ┌─────────────────────────────┐
+   │   FHEVM Smart Contract      │
+   │ - Store encrypted orders    │
+   │ - Match encrypted values    │
+   │ - Update order status       │
+   │ - Never sees plaintext      │
+   └───────────┬────────────────┘
+               │
+               ▼
+ ┌───────────────────────────────┐
+ │   Encrypted On-Chain State    │
+ │ - Orders                      │
+ │ - Matches                     │
+ │ - Status                      │
+ └───────────────────────────────┘
 
-### 1. Install Dependencies
+---
 
-```bash
-cd frontend
-npm install
-cd contracts
-npm install
-2. Compile Contracts
-cd contracts
-npx hardhat compile
+## 🧱 END TO END WORKFLOW
+
+```mermaid
+%%{init: {'theme':'dark', 'themeVariables': {
+    'primaryColor':'#38bdf8',
+    'primaryTextColor':'#fff',
+    'primaryBorderColor':'#0ea5e9',
+    'lineColor':'#38bdf8',
+    'secondaryColor':'#22c55e',
+    'tertiaryColor':'#ef4444',
+    'background':'#111',
+    'mainBkg':'#1b1b1b',
+    'secondBkg':'#242424',
+    'labelBackground':'#242424',
+    'labelTextColor':'#fff',
+    'actorBkg':'#2f2f2f',
+    'actorBorder':'#38bdf8',
+    'actorTextColor':'#fff',
+    'signalColor':'#38bdf8',
+    'signalTextColor':'#fff'
+}}}%%
+sequenceDiagram
+    participant U as Trader
+    participant C as Client App
+    participant SC as Orderbook (FHEVM)
+
+    rect rgb(30,50,90)
+        Note over U,SC: STAGE 1 · Encrypted Order Placement
+        U->>C: Enter price & amount
+        C->>C: Encrypt values
+        C->>SC: placeOrder(encrypted data)
+        SC-->>C: Order stored
+    end
+
+    rect rgb(40,80,60)
+        Note over U,SC: STAGE 2 · Encrypted Matching
+        U->>SC: findMatch(orderId)
+        SC->>SC: Compare encrypted prices
+        SC-->>U: Matching orders found
+    end
+
+    rect rgb(80,60,40)
+        Note over U,SC: STAGE 3 · Trade Execution
+        U->>SC: confirmMatch
+        SC-->>SC: Update order status
+        SC-->>U: Trade executed
+    end
 
