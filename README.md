@@ -219,4 +219,28 @@ npx hardhat ignition deploy ignition/modules/CipherBook.ts --network localhost
 cd forntend
 npm run dev
 ```
+🧰 Tech Stack
 
+Frontend: React + Vite
+
+Smart Contracts: Solidity + Zama FHEVM
+
+Encryption: Fully Homomorphic Encryption (FHE)
+
+Wallet: MetaMask
+
+Deployment: Vercel + Ethereum Sepolia
+
+🎯 Future Work
+
+Batch encrypted matching
+
+Private liquidity pools
+
+Encrypted AMM hybrid
+
+Cross-chain private trading
+
+📄 License
+
+MIT License — see LICENSE file.
