@@ -148,7 +148,6 @@ All without revealing values.
 
 ---
 
-## 🧬 System Architecture
 
 
 
@@ -178,6 +177,9 @@ All without revealing values.
      │ - Matches                     │
      │ - Status                      │
      └───────────────────────────────┘
+
+---
+
 
 ---
 
@@ -228,8 +230,6 @@ sequenceDiagram
         SC-->>SC: Update order status
         SC-->>U: Trade executed
     end
-
----
 
 ## 📊 Deployed Contract
 
