@@ -217,6 +217,7 @@ npx hardhat ignition deploy ignition/modules/CipherBook.ts --network localhost
 cd forntend
 npm run dev
 ```
+open http://localhost:5173 with your browser to see the result.
 ### 🧰 Tech Stack
 
 Frontend: React + Vite
