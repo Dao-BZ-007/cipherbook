@@ -265,4 +265,3 @@ cd forntend
 npm run dev
 ```
 
----
