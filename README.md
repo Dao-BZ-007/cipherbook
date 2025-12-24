@@ -184,7 +184,6 @@ All without revealing values.
 
 ## 🧱 END TO END WORKFLOW
 
-```mermaid
 %%{init: {'theme':'dark', 'themeVariables': {
     'primaryColor':'#38bdf8',
     'primaryTextColor':'#fff',
@@ -202,11 +201,11 @@ All without revealing values.
     'actorTextColor':'#fff',
     'signalColor':'#38bdf8',
     'signalTextColor':'#fff'
-}}}%%
+}}%%
 sequenceDiagram
     participant U as Trader
     participant C as Client App
-    participant SC as Orderbook (FHEVM)
+    participant SC as Orderbook_FHEVM
 
     rect rgb(30,50,90)
         Note over U,SC: STAGE 1 · Encrypted Order Placement
@@ -229,6 +228,7 @@ sequenceDiagram
         SC-->>SC: Update order status
         SC-->>U: Trade executed
     end
+
 
 
 
