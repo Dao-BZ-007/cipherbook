@@ -229,26 +229,6 @@ sequenceDiagram
         SC-->>U: Trade executed
     end
 
-        Note over U,SC: STAGE 1 · Encrypted Order Placement
-        U->>C: Enter price & amount
-        C->>C: Encrypt values
-        C->>SC: placeOrder(encrypted data)
-        SC-->>C: Order stored
-    end
-
-    rect rgb(40,80,60)
-        Note over U,SC: STAGE 2 · Encrypted Matching
-        U->>SC: findMatch(orderId)
-        SC->>SC: Compare encrypted prices
-        SC-->>U: Matching orders found
-    end
-
-    rect rgb(80,60,40)
-        Note over U,SC: STAGE 3 · Trade Execution
-        U->>SC: confirmMatch
-        SC-->>SC: Update order status
-        SC-->>U: Trade executed
-    end
 
 
 
