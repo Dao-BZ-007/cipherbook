@@ -231,7 +231,7 @@ sequenceDiagram
         SC-->>U: Trade executed
     end
 
-
+---
 
 
 ## 📊 Deployed Contract
