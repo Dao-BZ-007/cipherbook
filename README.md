@@ -159,7 +159,11 @@ With Zama FHEVM, this is the rule:
 | storage    | public            | encrypted    |
 | decryption | never on-chian    | only result  |
 
+This project demonstrates a privacy-preserving orderbook architecture.
 
+The Sepolia deployment uses plaintext values for functional demonstration.
+
+The FHE-enabled version replaces price and amount with encrypted integers using Zama FHEVM, allowing encrypted comparison without revealing values.
 ---
 
 ## 🧬 System Architecture
