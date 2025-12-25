@@ -147,17 +147,6 @@ Everything runs fully on-chain with encryption.
 All without revealing values.
 
 ---
-3️⃣ How FHE SHOULD look in CipherBook (conceptually)
-
-With Zama FHEVM, this is the rule:
-
-Thing	Plain Solidity	FHE Version
-price	uint64	euint64
-amount	uint64	euint64
-comparison	>=	TFHE.ge()
-storage	public	encrypted
-decryption	never on-chain	only result
-
 
 
 ## 🧬 System Architecture
