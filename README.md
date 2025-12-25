@@ -148,7 +148,7 @@ All without revealing values.
 
 ---
 ---
-### How FHE SHOULD look in CipherBook (conceptually)
+### 📒 How FHE SHOULD look in CipherBook (conceptually)
 With Zama FHEVM, this is the rule:
 
 | Thing      | Plain Solidity    | FHE version  |
