@@ -194,12 +194,13 @@ Follow these steps to run, test, and develop **CipherBook** locally using **Vite
 
 ---
 
-### ✅ 1. Install Dependencies
+### ✅ 1. To RUN local Ethereum network
 
 ```bash
 cd contracts
-npm install
+npx hardhat node
 ```
+It will give you private keys for demo accounts by using that import it in your MetaMask
 
 ---
 
@@ -210,6 +211,7 @@ cd contracts
 npx hardhat compile
 npx hardhat ignition deploy ignition/modules/CipherBook.ts --network localhost
 ```
+Add the given contract address to all files in frontend
 
 ### ✅ 3. Run Frontend
 
