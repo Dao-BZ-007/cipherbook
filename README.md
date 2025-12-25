@@ -147,7 +147,20 @@ Everything runs fully on-chain with encryption.
 All without revealing values.
 
 ---
+---
 
+With Zama FHEVM, this is the rule:
+
+| Thing      | Plain Solidity    | FHE version  |
+| ---------- | ----------------- | -------------|
+| price      | unit64            | eunit64      |
+| amount     | unit64            | eunit64      |
+| comparison | >=                | TFHE.ge()    |
+| storage    | public            | encrypted    |
+| decryption | never on-chian    | only result  |
+
+
+---
 
 ## 🧬 System Architecture
 
